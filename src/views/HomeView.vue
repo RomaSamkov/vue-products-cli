@@ -58,15 +58,11 @@
 
 <script>
 // @ is an alias to /src
-import food from "../food.json";
+// import food from "../food.json";
 
 export default {
   name: "HomeView",
-  data() {
-    return {
-      inventory: food,
-    };
-  },
+  props: ["inventory"],
   components: {},
 };
 </script>
