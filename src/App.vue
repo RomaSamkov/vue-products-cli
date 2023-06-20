@@ -21,7 +21,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav> -->
-  <router-view :inventory="inventory" />
+  <router-view :inventory="inventory" :addToCart="addToCart" />
   <Sidebar
     v-if="showSidebar"
     :toggle="toggleSidebar"
@@ -54,10 +54,9 @@ export default {
     },
   },
   methods: {
-    addToCart(name, index) {
+    addToCart(name, index, quantity) {
       if (!this.cart[name]) this.cart[name] = 0;
-      this.cart[name] += this.inventory[index].quantity;
-      this.inventory[index].quantity = 0;
+      this.cart[name] += quantity;
       console.log(this.cart);
     },
     toggleSidebar() {
@@ -67,10 +66,10 @@ export default {
       delete this.cart[name];
     },
   },
-  async mounted() {
-    const res = await fetch("./food.json");
-    const data = await res.json();
-    this.inventory = data;
-  },
+  // async mounted() {
+  //   const res = await fetch("./food.json");
+  //   const data = await res.json();
+  //   this.inventory = data;
+  // },
 };
 </script>
