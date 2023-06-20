@@ -57,7 +57,7 @@ export default {
     addToCart(name, index, quantity) {
       if (!this.cart[name]) this.cart[name] = 0;
       this.cart[name] += quantity;
-      console.log(this.cart);
+      this.quantity = 0;
     },
     toggleSidebar() {
       this.showSidebar = !this.showSidebar;
@@ -66,10 +66,5 @@ export default {
       delete this.cart[name];
     },
   },
-  // async mounted() {
-  //   const res = await fetch("./food.json");
-  //   const data = await res.json();
-  //   this.inventory = data;
-  // },
 };
 </script>
